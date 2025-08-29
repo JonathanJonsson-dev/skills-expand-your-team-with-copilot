@@ -163,6 +163,17 @@ initial_activities = {
         },
         "max_participants": 16,
         "participants": ["william@mergington.edu", "jacob@mergington.edu"]
+    },
+    "Manga Maniacs": {
+        "description": "Dive into epic worlds of adventure, friendship, and incredible powers! Join fellow otaku to discuss your favorite series, discover new manga gems, analyze amazing artwork, and debate the best character arcs. From shonen battles to slice-of-life stories, we celebrate all genres of Japanese manga!",
+        "schedule": "Tuesdays, 7:00 PM - 9:00 PM",
+        "schedule_details": {
+            "days": ["Tuesday"],
+            "start_time": "19:00",
+            "end_time": "21:00"
+        },
+        "max_participants": 15,
+        "participants": []
     }
 }
 
