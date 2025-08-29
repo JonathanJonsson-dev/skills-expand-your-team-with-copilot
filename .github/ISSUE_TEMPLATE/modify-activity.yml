@@ -1,0 +1,106 @@
+name: ✏️ Modify Existing Activity
+description: Request changes to an existing extracurricular activity
+title: "[MODIFY ACTIVITY] "
+labels: ["enhancement", "activity-modification"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Modify Existing Activity
+        
+        Need to make changes to an existing activity? Fill out this form to request modifications to activity details, schedule, or other settings.
+        
+  - type: dropdown
+    id: activity-to-modify
+    attributes:
+      label: Which activity needs to be modified?
+      description: Select the activity you want to change
+      options:
+        - Chess Club
+        - Programming Class
+        - Art Workshop
+        - Drama Club
+        - Math Club
+        - Debate Team
+        - Weekend Robotics Workshop
+        - Manga Maniacs
+        - Other (specify in description)
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: what-to-change
+    attributes:
+      label: What needs to be changed?
+      description: Select all that apply
+      options:
+        - label: Activity description
+        - label: Schedule (days and/or times)
+        - label: Maximum number of participants
+        - label: Activity name
+        - label: Other (explain below)
+    validations:
+      required: true
+      
+  - type: textarea
+    id: current-details
+    attributes:
+      label: Current Activity Details
+      description: What are the current details that need to be changed?
+      placeholder: e.g., "Currently meets on Mondays 3:15-4:45 PM with max 12 students"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: requested-changes
+    attributes:
+      label: Requested Changes
+      description: What specifically should be changed and what should it be changed to?
+      placeholder: e.g., "Change schedule to Tuesdays and Thursdays 3:30-5:00 PM, increase max participants to 18"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: reason-for-change
+    attributes:
+      label: Reason for Change
+      description: Why is this change needed?
+      placeholder: e.g., "Monday conflicts with other activities, need more space for interested students"
+    validations:
+      required: true
+      
+  - type: input
+    id: teacher-requesting
+    attributes:
+      label: Teacher Making Request
+      description: Which teacher is requesting this change?
+      placeholder: e.g., "Ms. Rodriguez", "Mr. Chen"
+    validations:
+      required: true
+      
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        
+        When this request is completed, the following should be true:
+        - [ ] Activity shows updated information on the website
+        - [ ] Students see the correct new schedule and details
+        - [ ] Any capacity changes are properly enforced
+        - [ ] Existing student enrollments are preserved (unless specified otherwise)
+        - [ ] Teachers can still manage the activity normally
+        
+        ## Implementation Hints
+        
+        **For the Copilot coding agent:**
+        - Locate the activity in the `initial_activities` dictionary in `src/backend/database.py`
+        - Update the specified fields (description, schedule, schedule_details, max_participants)
+        - For schedule changes, update both the human-readable `schedule` field and the structured `schedule_details`
+        - Ensure `schedule_details` format matches: `{"days": ["Day1", "Day2"], "start_time": "HH:MM", "end_time": "HH:MM"}`
+        - If reducing max_participants, consider if current enrollments exceed the new limit
+        - Test the changes appear correctly on the website
+        
+        ## Context
+        
+        This is for the Mergington High School activity management system. Activities are stored in the database and displayed on a web interface. Changes should maintain data integrity and not break existing functionality.

@@ -1,0 +1,155 @@
+name: 🔐 Authentication Issue
+description: Problems with teacher login, passwords, or user account access
+title: "[AUTH] "
+labels: ["bug", "authentication"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Authentication Issue
+        
+        Having trouble logging in or with user accounts? Use this form to get help with authentication problems.
+        
+  - type: dropdown
+    id: auth-problem-type
+    attributes:
+      label: What type of authentication problem are you experiencing?
+      description: Select the issue you're having
+      options:
+        - Cannot log in with correct username/password
+        - Forgot password - need password reset
+        - Account seems to be locked or disabled
+        - Login page not loading or working
+        - Logged in but system says I'm not authenticated
+        - Need new teacher account created
+        - Need to change/update password
+        - Other authentication issue
+    validations:
+      required: true
+      
+  - type: input
+    id: teacher-username
+    attributes:
+      label: Teacher Username
+      description: What username are you trying to use?
+      placeholder: e.g., "mrodriguez", "mchen"
+    validations:
+      required: true
+      
+  - type: input
+    id: teacher-display-name
+    attributes:
+      label: Teacher Display Name
+      description: What name should be displayed for this teacher?
+      placeholder: e.g., "Ms. Rodriguez", "Mr. Chen"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: problem-details
+    attributes:
+      label: Detailed Problem Description
+      description: Explain exactly what happens when you try to log in
+      placeholder: e.g., "I enter my username and password, click login, but get error message 'Invalid credentials'"
+    validations:
+      required: true
+      
+  - type: input
+    id: error-message
+    attributes:
+      label: Error Message (if any)
+      description: If you see an error message, type it exactly here
+      placeholder: e.g., "Invalid teacher credentials", "Authentication required"
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: when-started
+    attributes:
+      label: When did this problem start?
+      description: Select when you first noticed the issue
+      options:
+        - Just now - first time trying to log in
+        - Today - was working before
+        - This week - worked last week
+        - Don't remember - been a while since I tried
+        - New account - never worked
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: account-status
+    attributes:
+      label: Account Status
+      description: What do you know about this teacher account?
+      options:
+        - Existing account that was working before
+        - New teacher - account should be created
+        - Existing teacher - not sure if account exists
+        - Account exists but password may be wrong
+        - Don't know - need help figuring this out
+    validations:
+      required: true
+      
+  - type: textarea
+    id: what-tried
+    attributes:
+      label: What have you already tried?
+      description: List any troubleshooting steps you've attempted
+      placeholder: e.g., "Tried different browsers", "Double-checked username spelling", "Tried different passwords"
+    validations:
+      required: false
+      
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How urgent is this?
+      description: Select urgency level
+      options:
+        - Low - can wait a few days
+        - Medium - needed this week  
+        - High - needed today
+        - Critical - blocking important school activities
+    validations:
+      required: true
+      
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        
+        When this authentication issue is resolved, the following should be true:
+        - [ ] Teacher can successfully log in with their credentials
+        - [ ] Teacher username and display name work correctly
+        - [ ] Teacher can access all appropriate system functions
+        - [ ] Login process works reliably and consistently
+        - [ ] Any new accounts are properly configured
+        - [ ] Authentication errors are resolved
+        
+        ## Implementation Hints
+        
+        **For the Copilot coding agent:**
+        - Check teacher accounts in the database (`src/backend/database.py`)
+        - Default teacher accounts are in the `initial_teachers` array
+        - Current accounts: "mrodriguez", "mchen", "principal"
+        - Default passwords are hashed using Argon2 in the `hash_password()` function
+        - Authentication logic is in `src/backend/routers/auth.py`
+        - Frontend login is handled in `src/static/app.js`
+        
+        **Common fixes:**
+        - Add new teacher to `initial_teachers` array if account doesn't exist
+        - Check password hashing matches the expected format
+        - Verify teacher username matches exactly (case-sensitive)
+        - Ensure database initialization runs properly
+        - Check authentication API endpoints are working
+        - Test login flow end-to-end
+        
+        **For new teacher accounts:**
+        - Add entry to `initial_teachers` with username, display_name, hashed password, and role: "teacher"
+        - Use `hash_password()` function for password hashing
+        - Follow existing format exactly
+        
+        ## Context
+        
+        This is for the Mergington High School activity management system. Teachers need reliable access to manage student activities. Authentication uses username/password with Argon2 password hashing and session management.

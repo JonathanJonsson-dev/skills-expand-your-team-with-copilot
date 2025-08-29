@@ -1,0 +1,116 @@
+name: 🎯 New Activity Request
+description: Request to add a new extracurricular activity to the school system
+title: "[NEW ACTIVITY] "
+labels: ["enhancement", "new-activity"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## New Activity Request
+        
+        Thank you for wanting to add a new extracurricular activity! Please fill out the form below with all the details needed to create the new activity in our system.
+        
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: What is the name of the new activity?
+      placeholder: e.g., "Photography Club", "Science Olympiad", "Cooking Class"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: activity-description
+    attributes:
+      label: Activity Description
+      description: Provide a clear description of what students will do in this activity
+      placeholder: e.g., "Learn photography techniques, explore different camera settings, and create a portfolio of artistic photos"
+    validations:
+      required: true
+      
+  - type: checkboxes
+    id: activity-days
+    attributes:
+      label: Which days will this activity meet?
+      description: Select all days that apply
+      options:
+        - label: Monday
+        - label: Tuesday
+        - label: Wednesday
+        - label: Thursday
+        - label: Friday
+        - label: Saturday
+        - label: Sunday
+    validations:
+      required: true
+      
+  - type: input
+    id: start-time
+    attributes:
+      label: Start Time
+      description: What time does the activity start? (Use 24-hour format like 15:30 for 3:30 PM)
+      placeholder: e.g., "15:30" for 3:30 PM
+    validations:
+      required: true
+      
+  - type: input
+    id: end-time
+    attributes:
+      label: End Time
+      description: What time does the activity end? (Use 24-hour format like 17:00 for 5:00 PM)
+      placeholder: e.g., "17:00" for 5:00 PM
+    validations:
+      required: true
+      
+  - type: input
+    id: max-participants
+    attributes:
+      label: Maximum Participants
+      description: How many students can participate in this activity?
+      placeholder: e.g., "15"
+    validations:
+      required: true
+      
+  - type: input
+    id: teacher-sponsor
+    attributes:
+      label: Teacher Sponsor
+      description: Which teacher will sponsor/supervise this activity?
+      placeholder: e.g., "Ms. Rodriguez", "Mr. Chen"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: special-requirements
+    attributes:
+      label: Special Requirements or Equipment
+      description: Does this activity need any special equipment, room, or other requirements?
+      placeholder: e.g., "Needs access to art room with easels and paint supplies"
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        
+        When this request is completed, the following should be true:
+        - [ ] New activity appears in the activities list on the website
+        - [ ] Students can sign up for the activity
+        - [ ] Activity shows correct schedule and description
+        - [ ] Activity respects the maximum participant limit
+        - [ ] Teacher can manage student enrollments for this activity
+        
+        ## Implementation Hints
+        
+        **For the Copilot coding agent:**
+        - Add the new activity to the `initial_activities` dictionary in `src/backend/database.py`
+        - Follow the existing format with `description`, `schedule`, `schedule_details`, `max_participants`, and `participants` fields
+        - The `schedule_details` should include `days` array, `start_time`, and `end_time`
+        - Initialize `participants` as an empty array `[]`
+        - Test that the activity appears on the website and students can register
+        
+        ## Context
+        
+        This is for the Mergington High School activity management system. The system stores activities in a MongoDB database and displays them on a web interface where students can sign up.

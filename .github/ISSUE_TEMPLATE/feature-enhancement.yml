@@ -1,0 +1,147 @@
+name: ✨ Feature Enhancement
+description: Request a new feature or improvement to make the system better
+title: "[ENHANCEMENT] "
+labels: ["enhancement"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Feature Enhancement Request
+        
+        Have an idea to make the activity management system better? Share your suggestion and we'll work on implementing it!
+        
+  - type: textarea
+    id: feature-description
+    attributes:
+      label: What new feature or improvement would you like?
+      description: Describe the feature you'd like to see added or improved
+      placeholder: e.g., "Add ability to export student enrollment lists to PDF", "Show activity capacity on the main page"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: current-problem
+    attributes:
+      label: What problem would this solve?
+      description: Explain what current difficulty or limitation this would address
+      placeholder: e.g., "Right now I have to manually count students to know how full activities are", "It's hard to share enrollment lists with parents"
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: who-benefits
+    attributes:
+      label: Who would benefit from this feature?
+      description: Select who would use this new feature
+      options:
+        - Teachers only
+        - Students only
+        - Both teachers and students
+        - Parents/guardians
+        - School administrators
+        - Everyone
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: priority-level
+    attributes:
+      label: How important is this feature?
+      description: Select the priority level
+      options:
+        - Nice to have - would be convenient but not essential
+        - Important - would significantly improve daily use
+        - Critical - needed for effective school operations
+        - Emergency - blocking current work
+    validations:
+      required: true
+      
+  - type: textarea
+    id: detailed-requirements
+    attributes:
+      label: Detailed Requirements
+      description: Provide specific details about how this feature should work
+      placeholder: |
+        e.g., For PDF export feature:
+        - Add "Export to PDF" button on activity pages
+        - PDF should include activity name, student names, and contact info
+        - Should be formatted nicely for printing
+        - Only teachers should be able to export
+    validations:
+      required: true
+      
+  - type: textarea
+    id: success-criteria
+    attributes:
+      label: How will we know this feature is successful?
+      description: What would make you consider this feature complete and working well?
+      placeholder: e.g., "Teachers can export enrollment lists in under 30 seconds", "The PDF format is professional and readable"
+    validations:
+      required: true
+      
+  - type: input
+    id: teacher-requesting
+    attributes:
+      label: Teacher Making Request
+      description: Which teacher is requesting this feature?
+      placeholder: e.g., "Ms. Rodriguez", "Mr. Chen"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: alternative-solutions
+    attributes:
+      label: Alternative Ideas
+      description: Are there other ways this problem could be solved?
+      placeholder: e.g., "Could also email the lists instead of PDF", "Maybe integrate with school's existing systems"
+    validations:
+      required: false
+      
+  - type: checkboxes
+    id: feature-scope
+    attributes:
+      label: Feature Scope
+      description: Check all that might be involved
+      options:
+        - label: Changes to the website interface
+        - label: New teacher functions/buttons
+        - label: New student functions/buttons
+        - label: Database changes
+        - label: New API endpoints
+        - label: Email or notification features
+        - label: Printing or export features
+        - label: Mobile device compatibility
+        - label: Integration with other systems
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        
+        When this feature is implemented, the following should be true:
+        - [ ] The feature works as described in the requirements
+        - [ ] All specified user types can access and use the feature appropriately
+        - [ ] The feature integrates well with existing functionality
+        - [ ] The feature is easy to find and use
+        - [ ] No existing functionality is broken by the new feature
+        - [ ] The feature works on different devices and browsers
+        
+        ## Implementation Hints
+        
+        **For the Copilot coding agent:**
+        - Consider which files need to be modified:
+          - Frontend UI changes: `src/static/index.html`, `src/static/app.js`, `src/static/styles.css`
+          - Backend API changes: `src/backend/routers/activities.py`, `src/backend/routers/auth.py`
+          - Database changes: `src/backend/database.py`
+        - Follow existing code patterns and conventions
+        - Ensure proper authentication/authorization for teacher-only features
+        - Test the feature thoroughly across different user scenarios
+        - Consider mobile responsiveness and accessibility
+        - Add appropriate error handling and user feedback
+        
+        ## Context
+        
+        This is for the Mergington High School activity management system. New features should enhance the experience for teachers and students while maintaining the system's simplicity and reliability. The system is used daily for managing extracurricular activities.

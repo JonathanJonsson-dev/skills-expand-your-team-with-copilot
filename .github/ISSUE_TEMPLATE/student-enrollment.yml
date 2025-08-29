@@ -1,0 +1,122 @@
+name: 👥 Student Enrollment Management
+description: Help with adding, removing, or managing student enrollments in activities
+title: "[STUDENT ENROLLMENT] "
+labels: ["enhancement", "student-management"]
+assignees: []
+body:
+  - type: markdown
+    attributes:
+      value: |
+        ## Student Enrollment Management
+        
+        Need help managing student enrollments? Use this form to request changes to who is enrolled in activities.
+        
+  - type: dropdown
+    id: enrollment-action
+    attributes:
+      label: What do you need to do?
+      description: Select the type of enrollment action needed
+      options:
+        - Add student to an activity
+        - Remove student from an activity
+        - Transfer student to different activity
+        - View current enrollment list
+        - Fix enrollment issue/error
+        - Other (explain below)
+    validations:
+      required: true
+      
+  - type: input
+    id: activity-name
+    attributes:
+      label: Activity Name
+      description: Which activity is this request about?
+      placeholder: e.g., "Chess Club", "Programming Class"
+    validations:
+      required: true
+      
+  - type: input
+    id: student-email
+    attributes:
+      label: Student Email
+      description: What is the student's email address?
+      placeholder: e.g., "student@mergington.edu"
+    validations:
+      required: false
+      
+  - type: input
+    id: student-name
+    attributes:
+      label: Student Name
+      description: What is the student's name? (helpful for identification)
+      placeholder: e.g., "Sarah Johnson"
+    validations:
+      required: false
+      
+  - type: textarea
+    id: enrollment-details
+    attributes:
+      label: Detailed Request
+      description: Explain exactly what needs to be done
+      placeholder: e.g., "Please add sarah.johnson@mergington.edu to Chess Club. She expressed interest but couldn't sign up online."
+    validations:
+      required: true
+      
+  - type: dropdown
+    id: urgency
+    attributes:
+      label: How urgent is this request?
+      description: Select urgency level
+      options:
+        - Low - can wait a few days
+        - Medium - needed this week
+        - High - needed today
+        - Emergency - student is waiting
+    validations:
+      required: true
+      
+  - type: input
+    id: teacher-requesting
+    attributes:
+      label: Teacher Making Request
+      description: Which teacher is making this request?
+      placeholder: e.g., "Ms. Rodriguez", "Mr. Chen"
+    validations:
+      required: true
+      
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional Context
+      description: Any other information that would be helpful?
+      placeholder: e.g., "Student was absent when signups opened", "Parent requested the change", "Activity is nearly full"
+    validations:
+      required: false
+      
+  - type: markdown
+    attributes:
+      value: |
+        ## Acceptance Criteria
+        
+        When this request is completed, the following should be true:
+        - [ ] Student enrollment status is correctly updated in the system
+        - [ ] Student can see their enrollment status on the website
+        - [ ] Activity participant count is accurate
+        - [ ] No enrollment conflicts or errors remain
+        - [ ] Teacher can verify the change was successful
+        
+        ## Implementation Hints
+        
+        **For the Copilot coding agent:**
+        - Student enrollments are stored in the `participants` array of each activity in the database
+        - Use the activities API endpoints: `/activities/{activity_name}/signup` for adding students
+        - Use the `/activities/{activity_name}/unregister` for removing students
+        - Check current enrollment before adding to avoid duplicates
+        - Respect the `max_participants` limit when adding students
+        - Validate student email format (should end with @mergington.edu)
+        - Update the database through the appropriate MongoDB operations
+        - Test the changes by checking the website and API responses
+        
+        ## Context
+        
+        This is for the Mergington High School activity management system. Student enrollments are managed through a web interface and API. Teachers need to be able to help students who have trouble with online signup or need manual adjustments.
